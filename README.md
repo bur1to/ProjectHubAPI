@@ -54,8 +54,10 @@ npm start
 ```
 You will get this console messages:
 
-- Mongo is connected
-- Server is running on port 3000
+```bash
+Mongo is connected
+Server is running on port 3000
+```
 
 ## API Overview
 
