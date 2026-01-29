@@ -1,6 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const YAML = require('yamljs');
+const swaggerUI = require('swagger-ui-express');
+
+const swaggerSpec = YAML.load('./swagger/docs.yaml');
 
 const app = express();
 dotenv.config();
@@ -20,6 +24,7 @@ app.use(express.json());
 
 app.use('/users', userRoutes);
 app.use('/projects', projectRoutes);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.get('/', async (req, res, next) => {
   try {
